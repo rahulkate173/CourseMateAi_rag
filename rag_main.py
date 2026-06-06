@@ -12,7 +12,12 @@ from langchain_chroma import Chroma
 from dotenv import load_dotenv
 
 load_dotenv()
+## this changes is related to streamlit cloud 
+mistral_api_key = st.secrets.get("MISTRAL_API_KEY") or os.getenv("MISTRAL_API_KEY")
 
+if not mistral_api_key:
+    st.error("🔑 Mistral API Key not found! Please configure it in your Streamlit Secrets or .env file.")
+    st.stop()
 # --- Page Config ---
 st.set_page_config(page_title="PDF Chat Assistant", layout="centered")
 st.title("📄 PDF Chatbot with Mistral AI")
