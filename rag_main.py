@@ -25,8 +25,8 @@ st.title("📄 PDF Chatbot with Mistral AI")
 # --- Initialize Models (Cached to avoid reloading) ---
 @st.cache_resource
 def init_models():
-    llm = ChatMistralAI(model="mistral-small-latest", temperature=0.2)
-    embeddings = MistralAIEmbeddings(model="mistral-embed")
+    llm = ChatMistralAI(model="mistral-small-latest", temperature=0.2,api_key=mistral_api_key)
+    embeddings = MistralAIEmbeddings(model="mistral-embed",api_key=mistral_api_key)
     return llm, embeddings
 
 llm, embeddings = init_models()
